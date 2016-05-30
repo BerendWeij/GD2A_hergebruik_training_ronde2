@@ -6,7 +6,7 @@ Deze opdracht is een vervolg op deze repository: https://github.com/BerendWeij/G
 
 Belangrijkste les voor deze opdracht:
 Hoe communiceren Classes met elkaar.
-En hoe zorgen we ervoor dat onze dependencies niet te hard zijn?
+En hoe zorgen we ervoor dat onze dependencies niet strict zijn?
 
 #### Hoe moet je omgaan met deze repository?
 
