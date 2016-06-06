@@ -4,24 +4,19 @@ using System.Collections.Generic;
 
 public class PlayerWeapon : MonoBehaviour {
 
-    private List<IWeapon> currentWeapon;
+	private IWeapon currentWeapon;
+	private IWeapon[] weapons;
 
-    [SerializeField]
-    private NormalGun normalGun;
-    [SerializeField]
-    private ShotGun shotGun;
-    [SerializeField]
-    private Grenade grenadeThrower;
-	
     void Start()
     {
-        currentWeapon.Add(normalGun);
-        currentWeapon.Add(shotGun);
-        currentWeapon.Add(grenadeThrower);
+		weapons = GetComponents<IWeapon> ();
     }
 
     void OnMouseDown()
     {
-        currentWeapon = Random.Range(0, 2);
-    }
+		int randomIndex = Random.Range (0, weapons.Length);
+
+		currentWeapon = weapons[randomIndex];
+		currentWeapon.Shoot ();
+	}
 }

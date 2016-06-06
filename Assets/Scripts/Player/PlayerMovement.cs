@@ -3,19 +3,21 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
-
-
+	
     //Float
     [SerializeField]
     private float _movementSpeed;
 
     private float _jumpSpeed;
     private float _amountJumps = 0;
+	private float _horizontalMovement;
+
     //Float
 
     //Vector2
     private Vector2 _moveDirection;
-    //Vector2
+
+	//Vector2
 
     //Bool
     [SerializeField]
@@ -47,15 +49,28 @@ public class PlayerMovement : MonoBehaviour
 
     void RigidBodyMove()
     {
-        float x = Input.GetAxis("Horizontal");
 
-        _playerRigidBody2D.velocity = new Vector2(x * _movementSpeed, _playerRigidBody2D.velocity.y);
-    }
+		_horizontalMovement = 1f;
+        //float x = Input.GetAxis("Horizontal");
+
+      // _playerRigidBody2D.velocity = new Vector2(x * _movementSpeed, _playerRigidBody2D.velocity.y);
+
+	}
+
+	public void LeftMove()
+	{
+		_playerRigidBody2D.velocity = new Vector2 (-_horizontalMovement * _movementSpeed, _playerRigidBody2D.velocity.y);
+	}
+
+	public void RightMove()
+	{
+		_playerRigidBody2D.velocity = new Vector2 (_horizontalMovement * _movementSpeed, _playerRigidBody2D.velocity.y);
+	}
 
 
     private void JumpBool()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+		if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             _canJump = true;
         }
