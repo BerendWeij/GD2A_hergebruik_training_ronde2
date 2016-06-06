@@ -21,10 +21,8 @@ public class Health : MonoBehaviour {
 
 	void OnTriggerEnter(Collider collider)
 	{
-		if (collider.gameObject.tag == hitObject) {
 			health -= damage;
 			Debug.Log (health);
-			Destroy (collider);    
-		}
+			Destroy (collider.gameObject);
 	}
 }
