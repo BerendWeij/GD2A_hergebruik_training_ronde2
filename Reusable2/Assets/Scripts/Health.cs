@@ -2,13 +2,16 @@
 public class Health : MonoBehaviour 
 {
 	[SerializeField]
-	private float myHealth = 100;
+	protected float myHealth = 100;
 
 	[SerializeField]
-	private float maxHealth;
+	protected float maxHealth;
 
 	[SerializeField]
-	private float minHealth;
+	protected float minHealth;
+
+	[SerializeField]
+	DrawBar bar;
 
 	public float MyHealth
 	{
@@ -21,4 +24,9 @@ public class Health : MonoBehaviour
 		get { return maxHealth; }
 	}
 
+	void Update(){
+		if (bar) {
+			bar.barValue = myHealth;
+		}
+	}
 }
