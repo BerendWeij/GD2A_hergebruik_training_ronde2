@@ -43,7 +43,7 @@ public class player : living
         //transform.LookAt(Camera.main.ScreenPointToRay(Input.mousePosition));
         if (Input.GetMouseButtonDown(0))
         {
-            int randomShoot = Mathf.RoundToInt(Random.Range(1, 4));
+            int randomShoot = Mathf.RoundToInt(Random.Range(1, 5));
             switch(randomShoot)
             {
                 case 1:
@@ -62,6 +62,7 @@ public class player : living
                     print("ERROR");
                     break;
             }
+            print(randomShoot);
             equip.shoot(targetPoint);
             
             
