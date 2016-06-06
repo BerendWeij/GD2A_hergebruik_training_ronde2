@@ -8,7 +8,8 @@ public class player : living
     private gun1 gun1;
     private gun2 gun2;
     private gun3 gun3;
-    private gun4 gun4;
+    private MyhteCannon mytheCannon;
+    private MemeGun memeGun;
 
     private Iweapon equip;
 
@@ -28,7 +29,8 @@ public class player : living
         gun1 = GetComponent<gun1>();
         gun2 = GetComponent<gun2>();
         gun3 = GetComponent<gun3>();
-        gun4 = GetComponent<gun4>();
+        mytheCannon = GetComponent<MyhteCannon>();
+        memeGun = GetComponent<MemeGun>();
         maxHp = health;
         _rb = GetComponent<Rigidbody>();
     }
@@ -43,7 +45,7 @@ public class player : living
         //transform.LookAt(Camera.main.ScreenPointToRay(Input.mousePosition));
         if (Input.GetMouseButtonDown(0))
         {
-            int randomShoot = Mathf.RoundToInt(Random.Range(1, 5));
+            int randomShoot = Mathf.RoundToInt(Random.Range(1, 6));
             switch(randomShoot)
             {
                 case 1:
@@ -56,7 +58,10 @@ public class player : living
                     equip = gun3;
                     break;
                 case 4:
-                    equip = gun4;
+                    equip = memeGun;
+                    break;
+                case 5:
+                    equip = mytheCannon;
                     break;
                 default:
                     print("ERROR");
@@ -77,19 +82,19 @@ public class player : living
     }
     void keyboardInput()
     {
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.L) || Input.GetKey(KeyCode.D))
         {
             Move(new Vector3(1, 0, 0));
         }
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.J) || Input.GetKey(KeyCode.A))
         {
             Move(new Vector3(-1, 0, 0));
         }
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.I) || Input.GetKey(KeyCode.W))
         {
             Move(new Vector3(0, 0, 1)); ;
         }
-        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.K) || Input.GetKey(KeyCode.S))
         {
             Move(new Vector3(0, 0, -1)); ;
         }
