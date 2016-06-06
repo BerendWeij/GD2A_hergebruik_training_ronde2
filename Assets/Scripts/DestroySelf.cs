@@ -8,11 +8,17 @@ public class DestroySelf : MonoBehaviour {
 
     private float counter = 0;
 
+    [SerializeField]
+    bool _destroyMe;
+
     void FixedUpdate()
     {
-        if (counter > lifeTime)
+        if (_destroyMe)
         {
-            Destroy(this.gameObject);
+            if (counter > lifeTime)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 
@@ -20,7 +26,10 @@ public class DestroySelf : MonoBehaviour {
     {
         if (collision.transform.CompareTag(Tags.damageAble))
         {
+            if (_destroyMe)
             DestroyObject(gameObject, 1);
+
+            print("hihi, yours sincerely: " + collision.gameObject.name);
         }
     }
 }

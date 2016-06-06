@@ -7,6 +7,9 @@ public class Movement : MonoBehaviour {
     private string HorizontalInput = "Horizontal";
 
     [SerializeField]
+    private string VerticalInput = "Vertical";
+
+    [SerializeField]
     private KeyCode jumpButton = KeyCode.W; 
 
     [SerializeField]
@@ -17,17 +20,26 @@ public class Movement : MonoBehaviour {
 
     private bool grounded;
 
+    Vector3 currentVelocity;
+
     private Rigidbody rb;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        currentVelocity = rb.velocity;
     }
-    
+    public void SettingVelocity(float dx, float dz)
+    {
+        currentVelocity.x += dx * moveSpeed;
+        currentVelocity.z += dz * moveSpeed;
+    }
 	// Update is called once per frame
 	void Update () {
-        Vector3 currentVelocity = rb.velocity;
-        currentVelocity.x += Input.GetAxis(HorizontalInput) * moveSpeed;
+
+        SettingVelocity(Input.GetAxis(HorizontalInput), Input.GetAxis(VerticalInput));
+        if (Input.GetAxis(VerticalInput) != 0)
+            Debug.Log("up");
 
         if (Input.GetKeyDown(jumpButton) && grounded) {
             currentVelocity.y += jumpSpeed;
